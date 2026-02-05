@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Аукцион самолётов</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <h1>✈️ Аукцион самолётов</h1>
+        <p>Покупка и продажа авиационной техники</p>
+    </div>
+</header>
+
+{% block content %}{% endblock %}
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2026 Аукцион самолётов. Все права защищены.</p>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+{% extends './base.html' %}
+
+{% block content %}
+<main class="container">
+    <section class="cards">
+        {% for a in aircraft %}
+        <article class="card">
+            <img src="{{ a.image.url }}">
+            <h2>{{ a.name }}</h2>
+            <p>Год выпуска: {{  a.year_manufacture }}</p>
+            <p>Налёт: {{ a.raid }} часов</p>
+            <div class="price">Текущая ставка: ${{ a.current_rate }}</div>
+        </article>
+        {% endfor %}
+    </section>
+</main>
+{% endblock %}
