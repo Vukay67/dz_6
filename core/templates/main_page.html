@@ -1,17 +1,44 @@
 {% extends './base.html' %}
 
 {% block content %}
-<main class="container">
-    <section class="cards">
-        {% for a in aircraft %}
-        <article class="card">
-            <img src="{{ a.image.url }}">
-            <h2>{{ a.name }}</h2>
-            <p>Год выпуска: {{  a.year_manufacture }}</p>
-            <p>Налёт: {{ a.raid }} часов</p>
-            <div class="price">Текущая ставка: ${{ a.current_rate }}</div>
-        </article>
-        {% endfor %}
-    </section>
-</main>
+    <form class="search_form" method="get">
+        <input type="text" placeholder="Введите модель" name="name">
+
+        <select name="company">
+            <option value="">Компании</option>
+            <option value="Airbus">Airbus</option>
+            <option value="Boeing">Boeing</option>
+            <option value="Embraer">Embraer</option>
+            <option value="Bombardier">Bombardier</option>
+            <option value="ATR">ATR</option>
+            <option value="Сухой">Сухой</option>
+            <option value="Иркут">Иркут</option>
+            <option value="COMAC">COMAC</option>
+            <option value="Gulfstream">Gulfstream</option>
+            <option value="Dassault">Dassault</option>
+            <option value="Cessna">Cessna</option>
+        </select>
+
+        <select name="price">
+            <option value="">Сортировка по цене</option>
+            <option value="price_asc">Сначала дешевле</option>
+            <option value="price_desc">Сначала дороже</option>
+        </select>
+
+        <button type="submit">Искать</button>
+    </form>
+
+    <main class="container">
+        <section class="cards">
+            {% for a in aircraft %}
+            <article class="card">
+                <img src="{{ a.image.url }}" alt="">
+                <h2>{{ a.companys }} {{ a.model }}</h2>
+                <p>Год выпуска: {{ a.year_manufacture }}</p>
+                <p>Налёт: {{ a.raid }} часов</p>
+                <div class="price">${{ a.current_rate }}</div>
+            </article>
+            {% endfor %}
+        </section>
+    </main>
 {% endblock %}
