@@ -87,3 +87,124 @@ body {
     text-align: center;
     font-size: 14px;
 }
+
+
+.menu-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.menu-card{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 14px;
+  border-radius: calc(var(--radius) + 2px);
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+  color: #000000;
+}
+.menu-card:hover{
+  transform: translateY(-2px);
+  box-shadow: var(--shadow2);
+  border-color: rgba(255,122,24,.38);
+  background: rgba(0, 0, 0, 0.06);
+}
+.menu-icon{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,122,24,.14);
+  border: 1px solid rgba(255,122,24,.22);
+  font-size: 18px;
+
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu-icon > img {
+  height: 100%;
+}
+.menu-info{ flex: 1; }
+.menu-name{ font-weight: 900; letter-spacing: .2px;}
+.menu-desc{ margin-top: 4px; color: var(--muted2); font-size: 12px; }
+
+/* Search form */
+.search_form {
+    max-width: 1200px;
+    margin: 30px auto 10px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+    display: grid;
+    grid-template-columns: 1fr 200px 220px 120px;
+    gap: 15px;
+    align-items: center;
+}
+
+.search_form input,
+.search_form select {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+}
+
+.search_form input:focus,
+.search_form select:focus {
+    border-color: #0b4f6c;
+}
+
+.search_form button {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #0b4f6c;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.search_form button:hover {
+    background: #08384d;
+}
+
+/* Pagination */
+.pagination {
+    margin: 40px 0 10px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.pagination a,
+.pagination span {
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #0b4f6c;
+    background: #eef3f7;
+    transition: background 0.2s ease;
+}
+
+.pagination a:hover {
+    background: #d9e6ef;
+}
+
+.pagination .current {
+    background: #0b4f6c;
+    color: #fff;
+    font-weight: bold;
+}

@@ -4,11 +4,22 @@ from .models import *
 
 def main_page(request):
     aircraft = Aircraft.objects.all()
+    category = AircraftCategory.objects.all()
+    context = {
+        "aircraft": aircraft,
+        "category": category
+    }
+    return render(request, "main_page.html", context)
+
+def aircraft_page(request, id):
+    category = AircraftCategory.objects.get(id=id)
+    aircraft = category.aircraft.all()
+
 
     n_model = request.GET.get("name")
     n_company = request.GET.get("company")
     price = request.GET.get("price")
-
+    
     if n_model is not None and len(n_model) > 0:
         aircraft = aircraft.filter(model__icontains =n_model)
 
@@ -42,7 +53,18 @@ def main_page(request):
         elif price == "price_desc":
             aircraft = aircraft.order_by('-current_rate')
 
+    air_count = aircraft.count()
+
+    paginator = Paginator(aircraft, 1)  # 6 карточек на странице
+    page_number = request.GET.get("page", 1)
+    page_obj = paginator.get_page(page_number)
+
     context = {
-        "aircraft": aircraft
+        "category": category,
+        "aircraft": page_obj.object_list,
+        "page_obj": page_obj,
+        "air_count": air_count
     }
-    return render(request, "main_page.html", context)
+
+    return render(request, "aircraft.html", context)
+

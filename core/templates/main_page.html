@@ -1,32 +1,27 @@
 {% extends './base.html' %}
 
 {% block content %}
-    <form class="search_form" method="get">
-        <input type="text" placeholder="Введите модель" name="name">
 
-        <select name="company">
-            <option value="">Компании</option>
-            <option value="Airbus">Airbus</option>
-            <option value="Boeing">Boeing</option>
-            <option value="Embraer">Embraer</option>
-            <option value="Bombardier">Bombardier</option>
-            <option value="ATR">ATR</option>
-            <option value="Сухой">Сухой</option>
-            <option value="Иркут">Иркут</option>
-            <option value="COMAC">COMAC</option>
-            <option value="Gulfstream">Gulfstream</option>
-            <option value="Dassault">Dassault</option>
-            <option value="Cessna">Cessna</option>
-        </select>
+    <section class="section" id="menus">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Категории</h2>
+        </div>
 
-        <select name="price">
-            <option value="">Сортировка по цене</option>
-            <option value="price_asc">Сначала дешевле</option>
-            <option value="price_desc">Сначала дороже</option>
-        </select>
-
-        <button type="submit">Искать</button>
-    </form>
+        <div class="menu-grid">
+          {% for c in category %}
+          <a class="menu-card" href="{% url 'aircraft_page' c.id %}">
+            <div class="menu-icon" aria-hidden="true">
+              <img src="{{ c.image.url }}">
+            </div>
+            <div class="menu-info">
+              <div class="menu-name">{{ c.categories }}</div>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
 
     <main class="container">
         <section class="cards">
